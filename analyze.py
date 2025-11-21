@@ -86,12 +86,3 @@ if __name__ == "__main__":
     print("\n=== Top 10 WITHOUT duplicates (unique voters per tag) ===")
     for tag, count in tag_counts_unique.most_common(10):
         print(f"{tag}: {count}")
-
-    # === Target artists ===
-    target_artists = ["@vesummusic", "@kakashi_dubz", "@jovasdubz"]
-
-    print("\n=== Total Tag Summary for Selected Artists ===")
-    for artist in target_artists:
-        total_with_dupes = tag_counts_all.get(artist, 0)
-        total_unique = tag_counts_unique.get(artist, 0)
-        print(f"{artist} → total tags (with duplicates): {total_with_dupes}, unique voters: {total_unique}")

@@ -3,10 +3,10 @@
 ## 📌 Overview
 ![Contest rules screenshot](post.png)
 
-I entered an Instagram contest ([this post on Instagram](https://www.instagram.com/p/DRNG46vASoz/)) where the winner was supposed to get the **opening DJ slot for a show**.  
-The rules were simple on paper: people comment on the contest post and **tag their favorite local artist**, and the artist with the most tags wins.  
+I entered an Instagram contest ([this post on Instagram](https://www.instagram.com/p/DRNG46vASoz/)) where the winner was supposed to get the **opening DJ slot for a show**.
+The rules were simple on paper: people comment on the contest post and **tag their favorite local artist**, and the artist with the most tags wins.
 
-In reality, three artists — **Vesum**, **Kakashi**, and **Jovas** — were announced as winning the slot (3 artists sharing what was presented as one opportunity), even though they did **not** receive the most tags on the post. This project exists to put hard numbers behind what a lot of us already suspected: the contest result did not actually follow the “most tags wins” rule.
+I wanted a way to see how I was actually doing in the contest — not just by scrolling through comments, but by counting how many times each artist was tagged, and how many **unique people** tagged each artist.
 
 ---
 
@@ -77,21 +77,16 @@ python3 analyze.py
 3. The script will print:
 - Top 10 artists by **total tag mentions** (with duplicates)
 - Top 10 artists by **unique voters** (no duplicates)
-- A summary of total tags and unique voters specifically for:
-  - **@vesummusic**
-  - **@kakashi_dubz**
-  - **@jovasdubz**
 
 ---
 
 ## 🎯 Why I Built This
 
 I wanted to understand:
-- who was actually winning the contest according to the stated "most tags wins" rule,
-- how the announced winners compared to other artists in terms of total tags,
-- how many **unique people** actually tagged each artist (real support),
-- and to document that Vesum, Kakashi, and Jovas did not top the leaderboard, despite being given the slot.
+- how many total tags each artist received,
+- how many **unique people** tagged each artist,
+- and where I stood in the contest compared to other artists.
 
 Instagram only shows the mess — this script finds the truth underneath it.
 
-**Edit:** The original Instagram contest post has since been deleted. The `comments.txt` snapshot in this repo was last updated around **7:30 PM on 11/20**, roughly **30 minutes before** the final lineup was announced.
+**Edit:** The original Instagram contest post has since been deleted. The `comments.txt` snapshot in this repo was last updated around **7:30 PM on 11/20**, roughly **45 minutes before** the winner was announced.
