@@ -93,3 +93,5 @@ I wanted to understand:
 - and to document that Vesum, Kakashi, and Jovas did not top the leaderboard, despite being given the slot.
 
 Instagram only shows the mess — this script finds the truth underneath it.
+
+**Edit:** The original Instagram contest post has since been deleted. The `comments.txt` snapshot in this repo was last updated around **7:30 PM on 11/20**, roughly **30 minutes before** the final lineup was announced.
