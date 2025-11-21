@@ -1,92 +1,63 @@
-# Instagram Tag Contest Analyzer
+# Instagram Comment Tag Analyzer
 
-## 📌 Overview
-![Contest rules screenshot](post.png)
+![Interactive graph screenshot](screenshot.png)
 
-I entered an Instagram contest ([this post on Instagram](https://www.instagram.com/p/DRNG46vASoz/)) where the winner was supposed to get the **opening DJ slot for a show**.
-The rules were simple on paper: people comment on the contest post and **tag their favorite local artist**, and the artist with the most tags wins.
+This tool shows **which users were tagged the most** in an Instagram post and lets you explore the **relationship graph** between commenters and the people they tagged.
 
-I wanted a way to see how I was actually doing in the contest — not just by scrolling through comments, but by counting how many times each artist was tagged, and how many **unique people** tagged each artist.
+It works entirely offline — just copy/paste the comments from Instagram into a text file and generate your own interactive graph.
 
 ---
 
-## 🔍 What This Project Does
+## What It Does
+- Parses raw Instagram comments
+- Counts how many times each user was tagged
+- Counts how many **unique** people tagged each user
+- Builds an interactive graph showing:
+  - Who tagged whom
+  - How users are connected
+  - Clickable nodes with info about a user
+  - A search bar to quickly find anyone
+  - Leaderboards for top-tagged users
 
-### ✔ Parse the copied comments from Instagram  
-Comments are structured like:
+---
 
+## How to Use
+1. On **desktop**, open the Instagram post and scroll until comments stop loading.
+2. Press **CMD/CTRL + A** then **CMD/CTRL + C** to copy the whole page of comments.
+3. Paste into `comments.txt`, then delete any extra text that got copied above or below the comments (post caption, “load more” buttons, footer, etc.) so it matches the example format.
+4. Run:
+   ```bash
+   python3 graph_tags_interactive.py
+   ```
+5. Open `interactive_graph.html` in your browser.
+
+---
+
+## Files
+- `comments.txt` — your pasted Instagram comments
+- `graph_tags_interactive.py` — generates the graph
+- `interactive_graph.html` — output graph
+- `post.png` — screenshot of the rules (optional)
+
+---
+
+## Requirements
 ```
-username's profile picture
-username
- <time since comment> (2d, 3h, 5m, etc.)
-@artist1 @artist2
-```
-
-The script reads this format and extracts:
-- the commenter’s username  
-- the tags inside each comment
-
----
-
-## 🏆 Two Types of Leaderboards
-
-### **1. Raw Tag Count (WITH duplicates)**  
-Counts *every* time an `@tag` appears.
-
-Example:
-- If someone tags `@dj_example` 10 times → counts as 10  
-- If a person spams the same artist → all counted  
-- This shows total hype + spam + activity
-
-This is how Instagram **looks** when scrolling the comments.
-
----
-
-### **2. Unique Voter Count (WITHOUT duplicates)**  
-Counts **unique commenters** per artist.
-
-Example:
-- If someone tags `@basslord9000` 20 times → counts as **1 vote**
-- If someone tags `@basslord9000` again in a different comment → still **1 vote**
-- Shows REAL support, not spam
-
-This is the **fairest measure** of who the crowd actually supports.
-
----
-
-## 📁 Files
-
-- `comments.txt` — raw IG comments (copied & pasted from the post)
-- `analyze.py` — main script to parse and analyze
-- `README.md` — this file
-
----
-
-## ▶️ How to Run
-
-1. On desktop, open the Instagram contest post.
-2. Scroll through the comments **all the way to the bottom** so every comment loads.
-3. Press **Ctrl + A** (Windows) or **Cmd + A** (Mac) to select the entire page.
-4. Copy and paste everything into `comments.txt` (overwrite any previous content).
-5. Run:
-
-```
-python3 analyze.py
+pip install networkx pyvis
 ```
 
-3. The script will print:
-- Top 10 artists by **total tag mentions** (with duplicates)
-- Top 10 artists by **unique voters** (no duplicates)
+---
+
+## Notes
+- Comments with no @ tags are ignored.
+- The tool only uses the raw comment text — no login or API needed.
+- Works for any Instagram post as long as comments follow the same structure.
 
 ---
 
-## 🎯 Why I Built This
+## Example Data
+The included `comments.txt` contains a real example taken from the original Instagram post (before it was deleted). 
 
-I wanted to understand:
-- how many total tags each artist received,
-- how many **unique people** tagged each artist,
-- and where I stood in the contest compared to other artists.
+The file `post.png` is a screenshot of that post and its rules.
 
-Instagram only shows the mess — this script finds the truth underneath it.
-
-**Edit:** The original Instagram contest post has since been deleted. The `comments.txt` snapshot in this repo was last updated around **7:30 PM on 11/20**, roughly **45 minutes before** the winner was announced.
+You can delete or replace `comments.txt` with your own copied comments to analyze any other Instagram post.
